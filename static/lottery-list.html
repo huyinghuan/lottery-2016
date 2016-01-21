@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>芒果TV年会抽奖</title>
+  <link href="lib/semantic.min.css" rel="stylesheet" type="text/css">
+  <script src="lib/jquery.min.js"></script>
+  <script src="lib/semantic.min.js"></script>
+  <script src="lib/handlebars.js"></script>
+  <script type="text/x-handlebars-template" id="tableTr">
+
+    {{#each employeeList}}
+      <tr>
+        <td>{{num}}</td>
+        <td>{{name}}</td>
+        <td>{{award_name}}</td>
+        <td></td>
+      </tr>
+    {{/each}}
+
+  </script>
+</head>
+<body>
+<div class="ui grid">
+  <div class="two wide column"></div>
+  <div class="twelve wide column">
+    <div class="ui one column grid">
+      <div class="column">
+        <h2 class="ui center aligned header">芒果TV 2016 年会中奖名单</h2>
+        <table class="ui celled table">
+          <thead>
+          <tr>
+            <th>工号</th>
+            <th>姓名</th>
+            <th>奖品</th>
+            <th>签名</th>
+          </tr>
+          </thead>
+          <tbody id="employeeListTable">
+          </tbody>
+        </table>
+      </div>
+    </div>
+  </div>
+  <div class="two wide column"></div>
+</div>
+<script src="API.js"></script>
+<script src="lottery-list.js"></script>
+</body>
+</html>
