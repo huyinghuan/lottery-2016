@@ -1,0 +1,19 @@
+{
+  "name": "lottery-2016",
+  "version": "0.0.1",
+  "dependencies": {
+    "body-parser": "^1.14.2",
+    "coal": "0.0.7",
+    "express": "^4.13.3",
+    "lodash": "^3.10.1",
+    "multer": "^1.1.0",
+    "sqlite3": "^3.1.1",
+    "water-pit": "0.0.4"
+  },
+  "scripts": {
+    "start": "node-dev app.coffee"
+  },
+  "devDependencies": {
+    "coffee-script": "^1.10.0"
+  }
+}

@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title></title>
+  <link href="lib/semantic.min.css" rel="stylesheet" type="text/css">
+  <script src="lib/jquery.min.js"></script>
+  <script src="lib/semantic.min.js"></script>
+  <script src="lib/handlebars.js"></script>
+
+  <script type="text/x-handlebars-template" id="tableListTR">
+    {{#each awardList}}
+      <tr>
+        <td>{{name}}</td>
+        <td><button class="ui red button" data-id="{{id}}">删除</button></td>
+      </tr>
+    {{/each}}
+  </script>
+
+</head>
+<body>
+<div class="ui grid">
+  <div class="two wide column"></div>
+  <div class="twelve wide column">
+    <div class="ui menu">
+      <div class="item">芒果TV年会抽奖</div>
+      <a class="item" href="index.html">首页</a>
+      <a class="item active" href="award-setting.html">奖品设置</a>
+    </div>
+    <div class="ui one column grid">
+      <div class="column">
+        <form class="ui form" onsubmit="return false">
+          <h3 class="ui dividing header">奖品添加</h3>
+          <div class="inline fields">
+            <div class="one wide field"><label>名称</label></div>
+            <div class="four wide field">
+              <input type="text" placeholder="奖品名称" id="award_name">
+            </div>
+            <div class="field">
+              <button class="ui blue button" id="addAwardBtn">添加</button>
+            </div>
+          </div>
+        </form>
+      </div>
+    </div>
+    <div class="ui one column grid">
+      <div class="column">
+        <h3 class="ui dividing header">奖品列表</h3>
+        <table class="ui single line table">
+          <thead>
+          <tr>
+            <th>奖品名称</th>
+            <th>操作</th>
+          </tr>
+          </thead>
+          <tbody id="awardListTable">
+          </tbody>
+        </table>
+      </div>
+    </div>
+  </div>
+  <div class="two wide column"></div>
+</div>
+<script src="API.js"></script>
+<script src="award-setting.js"></script>
+</body>
+</html>
