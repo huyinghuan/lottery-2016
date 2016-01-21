@@ -14,6 +14,18 @@ module.exports =
         GET: 'getLuckyEmployee', POST: 'doLucky'
     }
     {
+      path: '/lottery'
+      biz: 'lottery'
+      methods:
+        DELETE: false, PUT: 'locked'
+    }
+    {
+      path: '/lottery/:id'
+      biz: 'lottery'
+      methods:
+        GET: false, POST: false, PUT: 'hasHappened'
+    }
+    {
       path: '/award'
       biz: 'award'
       methods:

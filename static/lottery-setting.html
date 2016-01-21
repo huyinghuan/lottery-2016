@@ -9,11 +9,20 @@
   <script src="lib/handlebars.js"></script>
 
   <script type="text/x-handlebars-template" id="tableListTR">
-    {{#each awardList}}
-      <tr>
-        <td>{{name}}</td>
+    {{#each lotteryList}}
+      <tr {{#if happened}}class="positive"{{/if}}>
+        <td>第 {{getIndex @index}} 次</td>
+        <td>{{award_name}}</td>
+        <td>{{count}}</td>
+        <td>{{#if happened}}是{{else}}否{{/if}}</td>
         <td><button class="ui red button" data-id="{{id}}">删除</button></td>
       </tr>
+    {{/each}}
+  </script>
+
+  <script type="text/x-handlebars-template" id="awardOptionList">
+    {{#each awardList}}
+      <option value="{{id}}">{{name}}</option>
     {{/each}}
   </script>
 
@@ -25,20 +34,28 @@
     <div class="ui menu">
       <div class="item">芒果TV年会抽奖</div>
       <a class="item" href="index.html">首页</a>
-      <a class="item active" href="award-setting.html">奖品设置</a>
-      <a class="item" href="lottery-setting.html">抽奖设置</a>
+      <a class="item" href="award-setting.html">奖品设置</a>
+      <a class="item active" href="lottery-setting.html">抽奖设置</a>
     </div>
     <div class="ui one column grid">
       <div class="column">
         <form class="ui form" onsubmit="return false">
-          <h3 class="ui dividing header">奖品添加</h3>
+          <h3 class="ui dividing header">添加抽奖</h3>
           <div class="inline fields">
-            <div class="one wide field"><label>名称</label></div>
-            <div class="four wide field">
-              <input type="text" placeholder="奖品名称" id="award_name">
+            <div class="one wide field"><label>奖品</label></div>
+            <div class="two wide field">
+              <select id="award_id"></select>
+            </div>
+            <div class="one wide field">抽奖数量</div>
+            <div class="two wide field">
+              <input type="number" id="award_count">
             </div>
             <div class="field">
               <button class="ui blue button" id="addAwardBtn">添加</button>
+            </div>
+            <div class="field">
+              <button class="ui green button" id="lockedLotteryList">锁定中奖顺序</button>
+              <button class="ui red button" id="unlockedLotteryList">解锁</button>
             </div>
           </div>
         </form>
@@ -46,11 +63,14 @@
     </div>
     <div class="ui one column grid">
       <div class="column">
-        <h3 class="ui dividing header">奖品列表</h3>
+        <h3 class="ui dividing header">抽奖顺序</h3>
         <table class="ui single line table">
           <thead>
           <tr>
+            <th>抽奖顺序</th>
             <th>奖品名称</th>
+            <th>抽奖数量</th>
+            <th>是否已完成?</th>
             <th>操作</th>
           </tr>
           </thead>
@@ -63,6 +83,6 @@
   <div class="two wide column"></div>
 </div>
 <script src="API.js"></script>
-<script src="award-setting.js"></script>
+<script src="lottery-setting.js"></script>
 </body>
 </html>
