@@ -1,0 +1,327 @@
+.cj2016 {
+    position: relative;
+    width: 1821px;
+    height: 1080px;
+    margin: 0 auto;
+    padding-left: 99px;
+    background: url("image/bg.png") no-repeat;
+    overflow: hidden;
+}
+
+.cj2016 .ul-box {
+    width: 200px;
+    height: 100%;
+    padding-left: 13px;
+    float: left;
+}
+
+.cj2016 .ul-box .img-box {
+    display: block;
+    width: 190px;
+    height: 200px;
+    margin-left: 10px;
+    position: relative;
+}
+
+.img-box i {
+    position: absolute;
+    display: block;
+    width: 66px;
+    height: 66px;
+    left: 6px;
+    top: 11px;
+    border: 3px solid #fff;
+    border-radius: 33px;
+    overflow: hidden;
+}
+
+.img-box i img {
+    width: 66px;
+    height: 66px;
+}
+
+.cj2016-logo, .cj2016-fly, .cj2016-wow {
+    position: absolute;
+    display: block;
+}
+
+.cj2016-logo {
+    width: 414px;
+    height: 320px;
+    left: 753px;
+    z-index: 3;
+    background: url("image/logo.png") no-repeat;
+}
+
+.cj2016-fly {
+    width: 1920px;
+    height: 1080px;
+    left: 0;
+    top: 0;
+    z-index: 3;
+    background: url("image/fly.png") no-repeat;
+}
+
+.cj2016-wow {
+    width: 525px;
+    height: 437px;
+    z-index: 2;
+    top: 50%;
+    left: 50%;
+    margin: -118px 0 0 -242px;
+    background: url("image/wow.png") no-repeat;
+}
+
+.cj2016-box {
+    position: absolute;
+    width: 1510px;
+    height: 690px;
+    top: 50%;
+    left: 50%;
+    margin: -340px 0 0 -754px;
+    z-index: 3;
+    background: url("image/box.png") no-repeat;
+}
+
+.w-01 {
+    background: url("image/woman01.png") left top no-repeat;
+}
+
+.w-02 {
+    background: url("image/woman02.png") left top no-repeat;
+}
+
+.w-03 {
+    background: url("image/woman03.png") left top no-repeat;
+}
+
+.w-04 {
+    background: url("image/woman04.png") left top no-repeat;
+}
+
+.m-01 {
+    background: url("image/man01.png") left top no-repeat;
+}
+
+.m-02 {
+    background: url("image/man02.png") left top no-repeat;
+}
+
+.m-03 {
+    background: url("image/man03.png") left top no-repeat;
+}
+
+.m-04 {
+    background: url("image/man04.png") left top no-repeat;
+}
+
+/*中奖*/
+.allbox {
+    padding: 180px 0 0 50px;
+}
+
+.allbox ul {
+    height: 75px;
+    padding-bottom: 60px;
+    font-style: normal;
+    font-weight: normal;
+}
+
+.allbox ul li {
+    float: left;
+    position: relative;
+    padding-right: 26px;
+    margin-right: 16px;
+    width: 75px;
+    height: 75px;
+    color: #5b3c00;
+    text-align: center;
+    background: url("image/p00.png") no-repeat;
+}
+
+.allbox ul li span {
+    position: absolute;
+    width: 100px;
+    font-size: 18px;
+    left: -10px;
+    bottom: -28px;
+}
+
+.allbox ul li i {
+    position: absolute;
+    width: 100px;
+    font-size: 14px;
+    left: -10px;
+    bottom: -50px;
+}
+
+.allbox ul li img {
+    position: absolute;
+    width: 75px;
+    height: 75px;
+    left: 0;
+    top: 0;
+}
+
+.allbox .prize {
+    color: #fff;
+    font-style: italic;
+    text-align: center;
+    font-weight: bold;
+}
+
+/** 奖品1个 30个人 **/
+.b30 .prize {
+    float: left;
+    width: 224px;
+    height: 208px;
+    padding: 17px 11px 0 0;
+    margin-top: 155px;
+    background: url("image/p02.png") no-repeat;
+}
+
+.b30 .prize .z1, .b30 .prize .z2, .b30 .prize .z3 {
+    display: block;
+}
+
+.b30 .prize .z1 {
+    width: 202px;
+    font-size: 22px;
+    line-height: 90px;
+}
+
+.b30 .prize .z2 {
+    padding-top: 10px;
+    width: 202px;
+    font-size: 20px;
+    line-height: 30px;
+}
+
+.b30 .prize .z3 {
+    width: 202px;
+    font-size: 15px;
+    line-height: 22px;
+}
+
+/** 奖品3个 30个人 **/
+
+.b303 .prize {
+    width: 1500px;
+    height: 130px;
+    margin-bottom: 10px;
+    background: url("image/p01.png") left bottom no-repeat;
+}
+
+.b303 .prize .z1, .b303 .prize .z2 {
+    display: block;
+    float: left;
+    margin: 60px 30px 0 0;
+    width: 202px;
+    height: 68px;
+}
+
+.b303 .prize .z1 {
+    font-size: 18px;
+    line-height: 38px;
+}
+
+.b303 .prize .z2 {
+    font-size: 16px;
+    line-height: 20px;
+}
+
+.b303 .prize ul {
+    height: 75px;
+}
+
+/** 奖品3个 10个人 **/
+.b433 {
+    padding: 276px 0px 0px 220px;
+    width: 120%;
+}
+
+.b433 .prize {
+    position: relative;
+    float: left;
+    padding-top: 135px;
+    background: url("image/p02.png") 55px 0px no-repeat;
+}
+
+.b433 .prize .z1 {
+    position: absolute;
+    display: block;
+    width: 202px;
+    height: 86px;
+    left: 55px;
+    top: 22px;
+    font-size: 22px;
+    line-height: 86px;
+}
+
+.b433 .ul4 .z1 {
+    left: 110px;
+}
+
+.b433 .ul4 {
+    background: url("image/p02.png") 110px 0px no-repeat;
+}
+
+.b433 ul {
+    padding: 28px 0 0 0;
+    background: url("image/p04.png") 35px 0 no-repeat;
+}
+
+.b433 .ul4 ul {
+    background: url("image/p03.png") 35px 0 no-repeat;
+}
+
+/** 奖品1个 5个人 **/
+.b5 {
+    padding: 230px 0 0 460px;
+}
+
+.b5 .prize {
+    position: relative;
+    padding-top: 135px;
+    background: url("image/p02.png") 170px 0px no-repeat;
+}
+
+.b5 .prize .z1 {
+    position: absolute;
+    display: block;
+    width: 202px;
+    height: 86px;
+    left: 170px;
+    top: 22px;
+    font-size: 22px;
+    line-height: 86px;
+}
+
+.b5 .prize ul {
+    padding: 28px 0 0 0;
+}
+
+/** 奖品1个 1个人 **/
+.b1 {
+    padding: 180px 110px 0 50px;
+}
+
+.b1 .prize {
+    width: 350px;
+    padding-top: 230px;
+    margin: 0 auto;
+    background: url("image/p05.png") top center no-repeat;
+}
+
+.b1 .prize ul {
+    width: 117px;
+    margin: 0 0 0 150px;
+}
+
+
+
+
+
+
+
+

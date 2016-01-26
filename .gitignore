@@ -3,3 +3,4 @@ data
 db.sqlite
 original-data
 npm-debug.log
+.idea
