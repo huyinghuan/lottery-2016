@@ -11,6 +11,7 @@
   <script type="text/x-handlebars-template" id="tableListTR">
     {{#each awardList}}
       <tr>
+        <td>{{id}}</td>
         <td>{{name}}</td>
         <td><button class="ui red button" data-id="{{id}}">删除</button></td>
       </tr>
@@ -52,6 +53,7 @@
         <table class="ui single line table">
           <thead>
           <tr>
+            <th>奖品id</th>
             <th>奖品名称</th>
             <th>操作</th>
           </tr>

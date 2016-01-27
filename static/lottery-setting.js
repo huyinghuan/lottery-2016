@@ -32,7 +32,7 @@ $(function(){
     API.get('lottery', function(data){
       var html = lotteryTableTemplate({lotteryList: data});
       $("#awardListTable").html(html);
-      bindDelEvent();
+      //bindDelEvent();
     })
   };
 

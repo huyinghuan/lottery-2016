@@ -4,8 +4,10 @@ _path = require 'path'
 
 config =
   port: 3000,
-  dest: _path.join(process.cwd(), 'data')#解压后的文件存储位置 绝对路径
+  dest: _path.join(process.cwd(), 'data')
   develop: false
+  img_source: '/home/ec/document/2016'
+
 
 config = _.extend(config, _product)
 module.exports = config

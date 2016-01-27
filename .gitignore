@@ -1,6 +1,6 @@
 node_modules
 data
 db.sqlite
-original-data
+db.sqlite.bak
 npm-debug.log
 .idea
