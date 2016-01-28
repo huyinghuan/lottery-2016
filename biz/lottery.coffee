@@ -11,10 +11,11 @@ class Lottery extends _Base
         select L.*, A.name as award_name
           from lottery L left join award A
             on L.award_id = A.id
-          order by L.id ASC
+          where happened = 0
+          order by L.id ASC limit 1
       '''
     _Lottery.sql(sql).then((data)->
-      resp.send(data)
+      resp.send(data[0] or {})
     )
 
   post: (req, resp)->

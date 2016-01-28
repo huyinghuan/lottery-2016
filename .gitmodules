@@ -1,0 +1,3 @@
+[submodule "static/2016lottery"]
+	path = static/2016lottery
+	url = git@git.hunantv.com:moonjay/2016lottery.git

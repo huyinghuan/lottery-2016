@@ -4,7 +4,7 @@ _path = require 'path'
 
 config =
   port: 3000,
-  dest: _path.join(process.cwd(), 'data')
+  dest: _path.join(process.cwd(), 'static/avatar')
   develop: false
   img_source: '/home/ec/document/2016'
 

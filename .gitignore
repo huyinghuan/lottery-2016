@@ -1,6 +1,5 @@
 node_modules
-data
+static/avatar
 db.sqlite
 db.sqlite.bak
-npm-debug.log
 .idea

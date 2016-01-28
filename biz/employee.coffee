@@ -6,7 +6,7 @@ class Employee extends _Base
     super
 
   get: (req, resp)->
-    sql = "select * from employee where lucky = 0"
+    sql = "select id, name, num from employee where lucky = 0"
     _Employee.sql(sql).then((data)->
       resp.send(data)
     )
