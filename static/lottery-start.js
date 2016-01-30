@@ -151,11 +151,13 @@ var showLuckList = function(data){
   var templateSource = $("#lotteryListTemplate_"+templateId).html();
   var template = Handlebars.compile(templateSource);
   var html = template({list: context});
-  $(".cj2016-box").html(html);
+  $(".cj2016-box").html(html).show();
+
 };
 
 //开始抽奖
 var start = function(){
+  $(".cj2016-box").hide();
   //bgMusic.play();
   $(".bgbox").html("");
   var queue = [];
@@ -200,11 +202,9 @@ $(document).bind('keyup.return', function(){
    // stopMusic.play();
     var luckyList = pickLuckyPeople();
     //提交中奖名单到服务器
-    console.log(luckyList);
-    showLuckList(luckyList);
-    //postLuckyList(luckyList, function(){
-    //  showLuckList(luckyList)
-    //});
+    postLuckyList(luckyList, function(){
+      showLuckList(luckyList)
+    });
     _stop = true;
   }else{
     _stop = false;
