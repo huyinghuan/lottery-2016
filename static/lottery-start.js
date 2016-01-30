@@ -201,9 +201,10 @@ $(document).bind('keyup.return', function(){
     var luckyList = pickLuckyPeople();
     //提交中奖名单到服务器
     console.log(luckyList);
-    postLuckyList(luckyList, function(){
-      showLuckList(luckyList)
-    });
+    showLuckList(luckyList);
+    //postLuckyList(luckyList, function(){
+    //  showLuckList(luckyList)
+    //});
     _stop = true;
   }else{
     _stop = false;
