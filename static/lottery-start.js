@@ -1,10 +1,11 @@
-_employeeList = [];
+var _employeeList = [];
+var _stop = false;
 //头像的样式列表
 var avatarClazzList = ["w-01", "w-02", "w-03", "w-04", "m-01", "m-02", "m-03", "m-04"];
 
 //获取随机头像样式
 var getRandomAvatarClazz = function(){
-  return avatarClazzList[parseInt(Math.random() * 9)];
+  return avatarClazzList[parseInt(Math.random() * 8)];
 };
 
 var currentAward = null;
@@ -31,34 +32,43 @@ var getRandomItem = function(){
   var tmp = _employeeList.splice(index, 1);
   return tmp[0]
 };
-
-var ani = function(left){
+//动画
+var ani = function(left, easing, duration){
   var $pool = $(".bgbox");
-  setInterval(function(){
+  var timer = setInterval(function(){
+    if(_stop){
+      clearInterval(timer);
+      return;
+    }
     var item = getRandomItem();
     var dom = getDivDom(item.id,  item.num, item.name, left);
     $pool.append(dom);
     $pool.find("#avatar_"+item.id+"").animate({top: "-200px"}, {
-      duration: 3000,
+      duration: duration,
       complete: function () {
-        console.log($(this).data('id'));
+        _employeeList.push({
+          id: $(this).data('id'),
+          num: $(this).data('num'),
+          name: $(this).data('name')
+        });
         $(this).remove()
       },
       fail: function(){ }
     })
-  }, 300)
+  }, 300, 'linear')
 };
 
 var startScroll = function(){
-
-  var leftQueue = [114, 114+200*1+10, 114+200*2+10, 114+200*3+10, 114+200*4+10, 114+200*5+10,114+200*6+10,114+200*7+10];
+  var durationQueue = [2000, 3000, 4000, 4000, 3000, 2000, 3000, 2000];
+  var leftQueue = [114, 114+200*1+10, 114+200*2+20, 114+200*3+40, 114+200*4+50, 114+200*5+70,114+200*6+80,114+200*7+100];
+  var easingQueue = ["easeOutQuad", "easeInOutCubic", "linear", "easeInOutCirc"];
   for(var index = 0; index < 8; index++){
-    ani(leftQueue[index%8])
+    ani(leftQueue[index], easingQueue[index%4], durationQueue[index%2])
   }
-
 };
 
 var start = function(){
+  bgMusic.play();
   $(".bgbox").html("");
   var queue = [];
   //获取中奖奖品
@@ -76,19 +86,6 @@ var start = function(){
     });
   });
 
-  //
-  //queue.push(function(emploeyList, cb){
-  //  var leftQueue = [114, 114+200*1+10, 114+200*2+10, 114+200*3+10, 114+200*4+10, 114+200*5+10,114+200*6+10,114+200*7+10];
-  //  var b = new Date().getTime();
-  //  for(var index = 0, length = emploeyList.length; index < length; index++){
-  //    var item = emploeyList[index];
-  //    var div = getDivDom(item.id, item.num, item.name,  leftQueue[index%8]);
-  //    $avatarPool.append(div)
-  //  }
-  //  console.log(new Date().getTime() - b);
-  //  cb()
-  //});
-
   //开始动画
   async.waterfall(queue, function(){
     startScroll()
@@ -96,3 +93,27 @@ var start = function(){
 };
 
 start();
+
+//操作失误
+var hasDone = false;
+//操作间隔
+var operationalInterval = 3000;
+
+$(document).bind('keyup.return', function(){
+  if(hasDone){
+    return;
+  }
+  hasDone = true;
+  setTimeout(function(){hasDone = false}, operationalInterval);
+  if(!_stop){
+    $(".ul-box").stop();
+    bgMusic.pause();
+    stopMusic.play();
+    console.log("选择中奖！");
+    _stop = true;
+  }else{
+    //init(generateLoopBlock);
+    _stop = false;
+    start();
+  }
+});
