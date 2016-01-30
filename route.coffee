@@ -20,6 +20,12 @@ module.exports =
         DELETE: false, PUT: 'locked'
     }
     {
+      path: '/lotteryList'
+      biz: 'lottery'
+      methods:
+        DELETE: false, PUT: false, POST: false, GET: 'getLotteryList'
+    }
+    {
       path: '/lottery/:id'
       biz: 'lottery'
       methods:

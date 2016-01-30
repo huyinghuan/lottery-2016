@@ -18,6 +18,19 @@ class Lottery extends _Base
       resp.send(data[0] or {})
     )
 
+  getLotteryList: (req, resp)->
+    sql =
+    '''
+        select L.*, A.name as award_name
+          from lottery L left join award A
+            on L.award_id = A.id
+          where happened = 0
+          order by L.id
+      '''
+    _Lottery.sql(sql).then((data)->
+      resp.send(data)
+    )
+
   post: (req, resp)->
     data = req.body
     lottery =

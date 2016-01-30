@@ -27,9 +27,9 @@ $(function(){
 
   reloadAwardList();
 
-  //加载抽奖列表
+  //加载抽奖顺序列表
   var reloadLotteryList = function(){
-    API.get('lottery', function(data){
+    API.get('lotteryList', function(data){
       var html = lotteryTableTemplate({lotteryList: data});
       $("#awardListTable").html(html);
       //bindDelEvent();

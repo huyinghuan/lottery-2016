@@ -9,11 +9,28 @@ var getRandomAvatarClazz = function(){
 };
 
 var currentAward = null;
+/**
+ * 由于有些抽奖包含多个奖品，因此需要进行字符串提取（非常不优雅的实现）*/
 var setCurrentAward = function(data){
-
+  var name = data.award_name;
+  if(name.indexOf("mix") == -1){
+    currentAward = [data];
+    return;
+  }
+  var tmp = name.replace("mix_", "").split("_");
+  var queue = [];
+  for(var index = 0, len = tmp.length; index < len; index++){
+    var item = tmp[index].replace("(", "").replace(")", "").split("-");
+    queue.push({
+      id: parseInt(item[0]),
+      award_name: item[1],
+      count: parseInt(item[2])
+    })
+  }
+  currentAward = queue;
 };
-var getCurrentAward = function(data){
-  currentAward = data
+var getCurrentAward = function(){
+  return currentAward;
 };
 
 var getDivDom = function(id, num, name, left){
@@ -55,25 +72,63 @@ var ani = function(left, easing, duration){
       },
       fail: function(){ }
     })
-  }, 300, 'linear')
+  }, duration/10, 'linear')
 };
 
 var startScroll = function(){
-  var durationQueue = [2000, 3000, 4000, 4000, 3000, 2000, 3000, 2000];
+  var durationQueue = [7000, 6000, 5000,4000, 4000, 5000, 6000, 7000];
   var leftQueue = [114, 114+200*1+10, 114+200*2+20, 114+200*3+40, 114+200*4+50, 114+200*5+70,114+200*6+80,114+200*7+100];
   var easingQueue = ["easeOutQuad", "easeInOutCubic", "linear", "easeInOutCirc"];
   for(var index = 0; index < 8; index++){
-    ani(leftQueue[index], easingQueue[index%4], durationQueue[index%2])
+    ani(leftQueue[index], easingQueue[index%4], durationQueue[index%8])
   }
 };
 
+//选择中奖人员
+var pickLuckyPeople = function(){
+  var employeePool = [];
+  $(".bgbox").find("div").each(function(){
+    var top = parseInt($(this).css("top").replace("px", ""));
+    if(top < -180){return;}
+    if(top > 1080){return;}
+    employeePool.push({
+      id: parseInt($(this).data("id")),
+      name: $(this).data("name"),
+      num: $(this).data("num")
+    })
+  });
+  //奖品列表
+  var awardList = getCurrentAward();
+
+  //中奖名单
+  var luckyList = {};
+
+  //根据奖品抽人
+  for(var index = 0, length = awardList.length; index < length; index++){
+    var award = awardList[index];
+    var currentLuckPeopleCount = award.count;
+    console.log(award);
+    for(var j = 0; j < currentLuckPeopleCount; j++){
+      var luckyIndex = parseInt(Math.random()*(employeePool.length));
+      var luckEmployee = employeePool.splice(luckyIndex, 1)[0];
+      if(!luckyList[award.id]){
+        luckyList[award.id] = [luckEmployee];
+      }else{
+        luckyList[award.id].push(luckEmployee);
+      }
+    }
+  }
+  console.log(luckyList);
+};
+
+//开始抽奖
 var start = function(){
-  bgMusic.play();
+  //bgMusic.play();
   $(".bgbox").html("");
   var queue = [];
   //获取中奖奖品
   queue.push(function(cb){
-    API.get("award", function (data) {
+    API.get("lottery", function (data) {
       setCurrentAward(data);
       cb()
     });
@@ -99,6 +154,7 @@ var hasDone = false;
 //操作间隔
 var operationalInterval = 3000;
 
+//回车暂停抽奖
 $(document).bind('keyup.return', function(){
   if(hasDone){
     return;
@@ -106,13 +162,12 @@ $(document).bind('keyup.return', function(){
   hasDone = true;
   setTimeout(function(){hasDone = false}, operationalInterval);
   if(!_stop){
-    $(".ul-box").stop();
-    bgMusic.pause();
-    stopMusic.play();
-    console.log("选择中奖！");
+   $(".ul-box").stop();
+   // bgMusic.pause();
+   // stopMusic.play();
+    pickLuckyPeople();
     _stop = true;
   }else{
-    //init(generateLoopBlock);
     _stop = false;
     start();
   }
