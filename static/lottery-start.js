@@ -9,9 +9,12 @@ var getRandomAvatarClazz = function(){
 };
 
 var currentAward = null;
+//当前抽奖的ID
+var _luckyId = 0;
 /**
  * 由于有些抽奖包含多个奖品，因此需要进行字符串提取（非常不优雅的实现）*/
 var setCurrentAward = function(data){
+  _luckyId = data.id;
   var name = data.award_name;
   if(name.indexOf("mix") == -1){
     currentAward = [data];
@@ -107,7 +110,6 @@ var pickLuckyPeople = function(){
   for(var index = 0, length = awardList.length; index < length; index++){
     var award = awardList[index];
     var currentLuckPeopleCount = award.count;
-    console.log(award);
     for(var j = 0; j < currentLuckPeopleCount; j++){
       var luckyIndex = parseInt(Math.random()*(employeePool.length));
       var luckEmployee = employeePool.splice(luckyIndex, 1)[0];
@@ -118,7 +120,38 @@ var pickLuckyPeople = function(){
       }
     }
   }
-  console.log(luckyList);
+  return luckyList;
+};
+
+//上传中奖名单
+var postLuckyList = function(data, cb){
+  var postData = {luckyId: _luckyId, award_list: []};
+  for(var award_id in data){
+    postData.award_list.push({
+      award_id: award_id,
+      list: _.map(data[award_id], 'id')
+    })
+  }
+  API.post("lucky", postData, function(){cb && cb()});
+};
+
+//展示中奖名单
+var showLuckList = function(data){
+  var templateId = 0;
+  var context = [];
+  for(var award_id in data){
+    templateId = templateId + Math.pow(data[award_id].length, 2);
+    context.push({
+      award_id: award_id,
+      count: data[award_id].length,
+      luckyList: data[award_id]
+    })
+  }
+  context = _.orderBy(context, ['count'], ['desc']);
+  var templateSource = $("#lotteryListTemplate_"+templateId).html();
+  var template = Handlebars.compile(templateSource);
+  var html = template({list: context});
+  $(".cj2016-box").html(html);
 };
 
 //开始抽奖
@@ -165,7 +198,12 @@ $(document).bind('keyup.return', function(){
    $(".ul-box").stop();
    // bgMusic.pause();
    // stopMusic.play();
-    pickLuckyPeople();
+    var luckyList = pickLuckyPeople();
+    //提交中奖名单到服务器
+    console.log(luckyList);
+    postLuckyList(luckyList, function(){
+      showLuckList(luckyList)
+    });
     _stop = true;
   }else{
     _stop = false;

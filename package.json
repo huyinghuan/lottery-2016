@@ -2,6 +2,7 @@
   "name": "lottery-2016",
   "version": "0.0.1",
   "dependencies": {
+    "async": "^1.5.2",
     "body-parser": "^1.14.2",
     "coal": "0.0.7",
     "express": "^4.13.3",

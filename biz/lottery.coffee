@@ -24,7 +24,6 @@ class Lottery extends _Base
         select L.*, A.name as award_name
           from lottery L left join award A
             on L.award_id = A.id
-          where happened = 0
           order by L.id
       '''
     _Lottery.sql(sql).then((data)->

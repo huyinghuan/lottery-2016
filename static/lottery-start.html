@@ -5,6 +5,26 @@
   <link rel="stylesheet" href="lottery-start.css" type="text/css" charset="utf-8">
   <link rel="stylesheet" href="global.css" type="text/css" charset="utf-8">
   <link rel="stylesheet" href="animate.css" type="text/css" charset="utf-8">
+  <!--4*4+3*3+3*3=34-->
+  <script type="text/x-handlebars-template" id="lotteryListTemplate_34">
+    <div class="allbox b433">
+      {{#each list}}
+      <div class="prize ul{{count}}">
+        <span class="z1"><i class="w-thing" style="background: url('image/a.png') bottom center no-repeat;"></i>{{award_id}}</span>
+        <ul>
+          {{#each luckyList}}
+          <li><img src="avatar/{{num}}.jpg"> <span>{{name}}</span><i>{{num}}</i></li>
+          {{/each}}
+        </ul>
+      </div>
+      {{/each}}
+    </div>
+  </script>
+  <script type="text/x-handlebars-template" id="lotteryListTemplate_900">
+
+
+
+  </script>
 </head>
 <body>
 
@@ -12,147 +32,8 @@
   <span class="cj2016-logo"><!-- 2016LOGO --></span>
   <span class="cj2016-wow"><!-- 领导按下出现WOW --></span>
   <!-- 中奖名单 -->
-  <div class="cj2016-box"  style="display: none;">
-    <!-- 奖品1个 1个人 -->
-    <div class="allbox b1" style="display: none;"  >
-      <div class="prize">
-
-        <ul>
-          <li><img src="http://p1.qqyou.com/touxiang/uploadpic/2013-3/12/2013031212072023665.jpg"><span>欧阳栗理子</span><i>008452</i></li>
-        </ul>
-      </div>
-    </div>
-    <!-- 奖品1个 5个人 -->
-    <div class="allbox b5"  style="display: none;">
-      <div class="prize">
-        <span class="z1"><i class="w-thing" style="background: url('image/a.png') bottom center no-repeat;"></i>MacBook 256G</span>
-        <ul>
-          <li><img src="http://img5q.duitang.com/uploads/item/201502/19/20150219182507_vGVaK.jpeg"> <span>欧阳栗子</span><i>008452</i></li>
-          <li><img src="http://p1.qqyou.com/touxiang/uploadpic/2013-3/12/2013031212072023665.jpg"><span>欧阳栗理子</span><i>008452</i></li>
-          <li><img src="http://imgsrc.baidu.com/forum/pic/item/09fa513d269759eed3fc1064b2fb43166c22dff5.jpg"><span>欧栗子</span><i>008452</i></li>
-          <li><img src="http://p1.qqyou.com/touxiang/uploadpic/2013-3/12/2013031212072023665.jpg"><span>欧阳栗理子</span><i>008452</i></li>
-          <li><img src="http://www.ineiyi.com/uploads/allimg/1312/78-131206114015.jpg"><span>欧子</span><i>008452</i></li>
-        </ul>
-      </div>
-    </div>
-    <!-- 奖品3个 10个人 -->
-    <div class="allbox b433"   >
-      <div class="prize ul4">
-        <span class="z1"><i class="w-thing" style="background: url('image/a.png') bottom center no-repeat;"></i>iPadmini4(64G)</span>
-        <ul>
-          <li><img src="http://img5q.duitang.com/uploads/item/201502/19/20150219182507_vGVaK.jpeg"> <span>欧阳栗子</span><i>008452</i></li>
-          <li><img src="http://p1.qqyou.com/touxiang/uploadpic/2013-3/12/2013031212072023665.jpg"><span>欧阳栗理子</span><i>008452</i></li>
-          <li><img src="http://imgsrc.baidu.com/forum/pic/item/09fa513d269759eed3fc1064b2fb43166c22dff5.jpg"><span>欧栗子</span><i>008452</i></li>
-          <li><img src="http://www.ineiyi.com/uploads/allimg/1312/78-131206114015.jpg"><span>欧子</span><i>008452</i></li>
-        </ul>
-      </div>
-      <div class="prize">
-        <span class="z1"><i class="w-thing" style="background: url('image/a.png') bottom center no-repeat;"></i>飞利浦空气净化器</span>
-        <ul>
-          <li><img src="http://img5q.duitang.com/uploads/item/201502/19/20150219182507_vGVaK.jpeg"> <span>欧阳栗子</span><i>008452</i></li>
-          <li><img src="http://p1.qqyou.com/touxiang/uploadpic/2013-3/12/2013031212072023665.jpg"><span>欧阳栗理子</span><i>008452</i></li>
-          <li><img src="http://imgsrc.baidu.com/forum/pic/item/09fa513d269759eed3fc1064b2fb43166c22dff5.jpg"><span>欧栗子</span><i>008452</i></li>
-        </ul>
-      </div>
-      <div class="prize">
-        <span class="z1"><i class="w-thing" style="background: url('image/a.png') bottom center no-repeat;"></i>创维酷开电视机</span>
-        <ul>
-          <li><img src="http://img5q.duitang.com/uploads/item/201502/19/20150219182507_vGVaK.jpeg"> <span>欧阳栗子</span><i>008452</i></li>
-          <li><img src="http://p1.qqyou.com/touxiang/uploadpic/2013-3/12/2013031212072023665.jpg"><span>欧阳栗理子</span><i>008452</i></li>
-          <li><img src="http://www.ineiyi.com/uploads/allimg/1312/78-131206114015.jpg"><span>欧子</span><i>008452</i></li>
-        </ul>
-      </div>
-    </div>
-    <!-- 奖品3个 30个人 -->
-    <div class="allbox b303"   style="display: none;">
-      <div class="prize"><span class="z2"><i class="w-thing" style="background: url('image/b.png') bottom center no-repeat;"></i>旺旺医院体检卡<br>+唐人神礼包</span>
-        <ul>
-          <li><img src="http://img5q.duitang.com/uploads/item/201502/19/20150219182507_vGVaK.jpeg"> <span>欧阳栗子</span><i>008452</i></li>
-          <li><img src="http://p1.qqyou.com/touxiang/uploadpic/2013-3/12/2013031212072023665.jpg"><span>欧阳栗理子</span><i>008452</i></li>
-          <li><img src="http://imgsrc.baidu.com/forum/pic/item/09fa513d269759eed3fc1064b2fb43166c22dff5.jpg"><span>欧栗子</span><i>008452</i></li>
-          <li><img src="http://www.ineiyi.com/uploads/allimg/1312/78-131206114015.jpg"><span>欧子</span><i>008452</i></li>
-          <li><img src="http://img5q.duitang.com/uploads/item/201502/19/20150219182507_vGVaK.jpeg"><span>欧阳栗子</span><i>008452</i></li>
-          <li><img src="http://imgsrc.baidu.com/forum/pic/item/09fa513d269759eed3fc1064b2fb43166c22dff5.jpg"><span>欧阳栗子</span><i>008452</i></li>
-          <li><img src="http://www.ineiyi.com/uploads/allimg/1312/78-131206114015.jpg"><span>欧阳栗子</span><i>008452</i></li>
-          <li><img src="http://p1.qqyou.com/touxiang/uploadpic/2013-3/12/2013031212072023665.jpg"><span>欧阳栗子</span><i>008452</i></li>
-          <li><img src="http://imgsrc.baidu.com/forum/pic/item/09fa513d269759eed3fc1064b2fb43166c22dff5.jpg"><span>欧阳栗子</span><i>008452</i></li>
-          <li><img src="http://p1.qqyou.com/touxiang/uploadpic/2013-3/12/2013031212072023665.jpg"><span>欧阳毛栗子</span><i>008452</i></li>
-        </ul>
-      </div>
-      <div class="prize"><span class="z1"><i class="w-thing" style="background: url('image/b.png') bottom center no-repeat;"></i>富士拍立得</span>
-        <ul>
-          <li><img src="http://img5q.duitang.com/uploads/item/201502/19/20150219182507_vGVaK.jpeg"> <span>欧阳栗子</span><i>008452</i></li>
-          <li><img src="http://p1.qqyou.com/touxiang/uploadpic/2013-3/12/2013031212072023665.jpg"><span>欧阳栗理子</span><i>008452</i></li>
-          <li><img src="http://imgsrc.baidu.com/forum/pic/item/09fa513d269759eed3fc1064b2fb43166c22dff5.jpg"><span>欧栗子</span><i>008452</i></li>
-          <li><img src="http://www.ineiyi.com/uploads/allimg/1312/78-131206114015.jpg"><span>欧子</span><i>008452</i></li>
-          <li><img src="http://img5q.duitang.com/uploads/item/201502/19/20150219182507_vGVaK.jpeg"><span>欧阳栗子</span><i>008452</i></li>
-          <li><img src="http://imgsrc.baidu.com/forum/pic/item/09fa513d269759eed3fc1064b2fb43166c22dff5.jpg"><span>欧阳栗子</span><i>008452</i></li>
-          <li><img src="http://www.ineiyi.com/uploads/allimg/1312/78-131206114015.jpg"><span>欧阳栗子</span><i>008452</i></li>
-          <li><img src="http://p1.qqyou.com/touxiang/uploadpic/2013-3/12/2013031212072023665.jpg"><span>欧阳栗子</span><i>008452</i></li>
-          <li><img src="http://imgsrc.baidu.com/forum/pic/item/09fa513d269759eed3fc1064b2fb43166c22dff5.jpg"><span>欧阳栗子</span><i>008452</i></li>
-          <li><img src="http://p1.qqyou.com/touxiang/uploadpic/2013-3/12/2013031212072023665.jpg"><span>欧阳毛栗子</span><i>008452</i></li>
-        </ul>
-      </div>
-      <div class="prize"><span class="z1"><i class="w-thing" style="background: url('image/b.png') bottom center no-repeat;"></i>芒果小觅</span>
-        <ul>
-          <li><img src="http://img5q.duitang.com/uploads/item/201502/19/20150219182507_vGVaK.jpeg"> <span>欧阳栗子</span><i>008452</i></li>
-          <li><img src="http://p1.qqyou.com/touxiang/uploadpic/2013-3/12/2013031212072023665.jpg"><span>欧阳栗理子</span><i>008452</i></li>
-          <li><img src="http://imgsrc.baidu.com/forum/pic/item/09fa513d269759eed3fc1064b2fb43166c22dff5.jpg"><span>欧栗子</span><i>008452</i></li>
-          <li><img src="http://www.ineiyi.com/uploads/allimg/1312/78-131206114015.jpg"><span>欧子</span><i>008452</i></li>
-          <li><img src="http://img5q.duitang.com/uploads/item/201502/19/20150219182507_vGVaK.jpeg"><span>欧阳栗子</span><i>008452</i></li>
-          <li><img src="http://imgsrc.baidu.com/forum/pic/item/09fa513d269759eed3fc1064b2fb43166c22dff5.jpg"><span>欧阳栗子</span><i>008452</i></li>
-          <li><img src="http://www.ineiyi.com/uploads/allimg/1312/78-131206114015.jpg"><span>欧阳栗子</span><i>008452</i></li>
-          <li><img src="http://p1.qqyou.com/touxiang/uploadpic/2013-3/12/2013031212072023665.jpg"><span>欧阳栗子</span><i>008452</i></li>
-          <li><img src="http://imgsrc.baidu.com/forum/pic/item/09fa513d269759eed3fc1064b2fb43166c22dff5.jpg"><span>欧阳栗子</span><i>008452</i></li>
-          <li><img src="http://p1.qqyou.com/touxiang/uploadpic/2013-3/12/2013031212072023665.jpg"><span>欧阳毛栗子</span><i>008452</i></li>
-        </ul>
-      </div>
-    </div>
-    <!-- 奖品1个 30个人 -->
-    <div class="allbox b30"  style="display: none;">
-      <div class="prize"><span class="z1" style="display: none;"><i class="w-thing" style="background: url('image/a.png') bottom center no-repeat;"></i>芒果嗨QH7</span>
-        <!-- z2和z3必须同时隐藏和显示--><span class="z2"><i class="w-thing" style="background: url('image/a.png') bottom center no-repeat;"></i>电子礼包</span> <span class="z3">（小米体重秤、运动手环、移动电源）</span></div>
-      <ul>
-        <li><img src="http://img5q.duitang.com/uploads/item/201502/19/20150219182507_vGVaK.jpeg"> <span>欧阳栗子</span><i>008452</i></li>
-        <li><img src="http://p1.qqyou.com/touxiang/uploadpic/2013-3/12/2013031212072023665.jpg"><span>欧阳栗理子</span><i>008452</i></li>
-        <li><img src="http://imgsrc.baidu.com/forum/pic/item/09fa513d269759eed3fc1064b2fb43166c22dff5.jpg"><span>欧栗子</span><i>008452</i></li>
-        <li><img src="http://www.ineiyi.com/uploads/allimg/1312/78-131206114015.jpg"><span>欧子</span><i>008452</i></li>
-        <li><img src="http://img5q.duitang.com/uploads/item/201502/19/20150219182507_vGVaK.jpeg"><span>欧阳栗子</span><i>008452</i></li>
-        <li><img src="http://imgsrc.baidu.com/forum/pic/item/09fa513d269759eed3fc1064b2fb43166c22dff5.jpg"><span>欧阳栗子</span><i>008452</i></li>
-        <li><img src="http://www.ineiyi.com/uploads/allimg/1312/78-131206114015.jpg"><span>欧阳栗子</span><i>008452</i></li>
-        <li><img src="http://p1.qqyou.com/touxiang/uploadpic/2013-3/12/2013031212072023665.jpg"><span>欧阳栗子</span><i>008452</i></li>
-        <li><img src="http://imgsrc.baidu.com/forum/pic/item/09fa513d269759eed3fc1064b2fb43166c22dff5.jpg"><span>欧阳栗子</span><i>008452</i></li>
-        <li><img src="http://p1.qqyou.com/touxiang/uploadpic/2013-3/12/2013031212072023665.jpg"><span>欧阳毛栗子</span><i>008452</i></li>
-      </ul>
-      <ul>
-        <li><img src="http://img5q.duitang.com/uploads/item/201502/19/20150219182507_vGVaK.jpeg"> <span>欧阳栗子</span><i>008452</i></li>
-        <li><img src="http://p1.qqyou.com/touxiang/uploadpic/2013-3/12/2013031212072023665.jpg"><span>欧阳栗理子</span><i>008452</i></li>
-        <li><img src="http://imgsrc.baidu.com/forum/pic/item/09fa513d269759eed3fc1064b2fb43166c22dff5.jpg"><span>欧栗子</span><i>008452</i></li>
-        <li><img src="http://www.ineiyi.com/uploads/allimg/1312/78-131206114015.jpg"><span>欧子</span><i>008452</i></li>
-        <li><img src="http://img5q.duitang.com/uploads/item/201502/19/20150219182507_vGVaK.jpeg"><span>欧阳栗子</span><i>008452</i></li>
-        <li><img src="http://imgsrc.baidu.com/forum/pic/item/09fa513d269759eed3fc1064b2fb43166c22dff5.jpg"><span>欧阳栗子</span><i>008452</i></li>
-        <li><img src="http://www.ineiyi.com/uploads/allimg/1312/78-131206114015.jpg"><span>欧阳栗子</span><i>008452</i></li>
-        <li><img src="http://p1.qqyou.com/touxiang/uploadpic/2013-3/12/2013031212072023665.jpg"><span>欧阳栗子</span><i>008452</i></li>
-        <li><img src="http://imgsrc.baidu.com/forum/pic/item/09fa513d269759eed3fc1064b2fb43166c22dff5.jpg"><span>欧阳栗子</span><i>008452</i></li>
-        <li><img src="http://p1.qqyou.com/touxiang/uploadpic/2013-3/12/2013031212072023665.jpg"><span>欧阳毛栗子</span><i>008452</i></li>
-      </ul>
-      <ul>
-        <li><img src="http://img5q.duitang.com/uploads/item/201502/19/20150219182507_vGVaK.jpeg"> <span>欧阳栗子</span><i>008452</i></li>
-        <li><img src="http://p1.qqyou.com/touxiang/uploadpic/2013-3/12/2013031212072023665.jpg"><span>欧阳栗理子</span><i>008452</i></li>
-        <li><img src="http://imgsrc.baidu.com/forum/pic/item/09fa513d269759eed3fc1064b2fb43166c22dff5.jpg"><span>欧栗子</span><i>008452</i></li>
-        <li><img src="http://www.ineiyi.com/uploads/allimg/1312/78-131206114015.jpg"><span>欧子</span><i>008452</i></li>
-        <li><img src="http://img5q.duitang.com/uploads/item/201502/19/20150219182507_vGVaK.jpeg"><span>欧阳栗子</span><i>008452</i></li>
-        <li><img src="http://imgsrc.baidu.com/forum/pic/item/09fa513d269759eed3fc1064b2fb43166c22dff5.jpg"><span>欧阳栗子</span><i>008452</i></li>
-        <li><img src="http://www.ineiyi.com/uploads/allimg/1312/78-131206114015.jpg"><span>欧阳栗子</span><i>008452</i></li>
-        <li><img src="http://p1.qqyou.com/touxiang/uploadpic/2013-3/12/2013031212072023665.jpg"><span>欧阳栗子</span><i>008452</i></li>
-        <li><img src="http://imgsrc.baidu.com/forum/pic/item/09fa513d269759eed3fc1064b2fb43166c22dff5.jpg"><span>欧阳栗子</span><i>008452</i></li>
-        <li><img src="http://p1.qqyou.com/touxiang/uploadpic/2013-3/12/2013031212072023665.jpg"><span>欧阳毛栗子</span><i>008452</i></li>
-      </ul>
-    </div>
-  </div>
-  <!-- 背景头像滚动竖条 此处添加 runstop 停止动画-->
-  <div class="bgbox">
-  </div>
+  <div class="cj2016-box"></div>
+  <div class="bgbox"></div>
 </div>
 <canvas width="1920" height="1080" style="position: absolute;z-index: 10;top:0px;left: 0px;"></canvas>
 <script src="lib/jquery.min.js"></script>
@@ -160,6 +41,8 @@
 <script src="lib/jquery.hotkeys.js"></script>
 <script src="lib/howler.js"></script>
 <script src="lib/async.min.js"></script>
+<script src="lib/handlebars.js"></script>
+<script src="lib/lodash.js"></script>
 <script src="audio.js"></script>
 <script src="API.js"></script>
 <script src="lottery-start.js"></script>
