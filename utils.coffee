@@ -2,14 +2,17 @@ module.exports = {
   #分析奖品构成 主要是存在混合奖品的情况
   analyzeAward: (data)->
     name = data.award_name
-    return [data] if name.indexOf("mix") is -1
+    if name.indexOf("mix") is -1
+      return [{
+        id: data.award_id
+        count: data.count
+      }]
     tmp = name.replace("mix_", "").split("_");
     queue = [];
     for item in tmp
       award = item.replace("(", "").replace(")", "").split("-")
       queue.push({
         id: parseInt(award[0]),
-        award_name: award[1],
         count: parseInt(award[2])
       })
     queue

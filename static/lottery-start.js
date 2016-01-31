@@ -8,34 +8,6 @@ var getRandomAvatarClazz = function(){
   return avatarClazzList[parseInt(Math.random() * 8)];
 };
 
-var currentAward = null;
-//当前抽奖的ID
-var _luckyId = 0;
-/**
- * 由于有些抽奖包含多个奖品，因此需要进行字符串提取（非常不优雅的实现）*/
-var setCurrentAward = function(data){
-  _luckyId = data.id;
-  var name = data.award_name;
-  if(name.indexOf("mix") == -1){
-    currentAward = [data];
-    return;
-  }
-  var tmp = name.replace("mix_", "").split("_");
-  var queue = [];
-  for(var index = 0, len = tmp.length; index < len; index++){
-    var item = tmp[index].replace("(", "").replace(")", "").split("-");
-    queue.push({
-      id: parseInt(item[0]),
-      award_name: item[1],
-      count: parseInt(item[2])
-    })
-  }
-  currentAward = queue;
-};
-var getCurrentAward = function(){
-  return currentAward;
-};
-
 var getDivDom = function(id, num, name, left){
   var arr = [id, id, num, name, left, getRandomAvatarClazz(), num];
   var div = '<div id="avatar_?" class="ul-box" data-id="?" data-num="?" data-name="?" style="left: ?px">' +
@@ -105,7 +77,6 @@ var showLuckList = function(data){
   var context = [];
   for(var award_id in data){
     templateId = templateId + Math.pow(data[award_id].length, 2);
-
     context.push({
       award_id: award_id,
       count: data[award_id].length,
