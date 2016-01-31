@@ -87,16 +87,52 @@ var startScroll = function(){
   }
 };
 
-//选择中奖人员 进入了池不代表中奖
-var pickLuckyPeoplePool = function(){
+//选择中奖人员
+var pickLuckyPeople = function(){
   var employeePool = [];
   $(".bgbox").find("div").each(function(){
     var top = parseInt($(this).css("top").replace("px", ""));
     if(top < -180){return;}
     if(top > 1080){return;}
-    employeePool.push(parseInt($(this).data("id")))
+    employeePool.push({
+      id: parseInt($(this).data("id")),
+      name: $(this).data("name"),
+      num: $(this).data("num")
+    })
   });
-  return employeePool;
+  //奖品列表
+  var awardList = getCurrentAward();
+
+  //中奖名单
+  var luckyList = {};
+
+  //根据奖品抽人
+  for(var index = 0, length = awardList.length; index < length; index++){
+    var award = awardList[index];
+    var currentLuckPeopleCount = award.count;
+    for(var j = 0; j < currentLuckPeopleCount; j++){
+      var luckyIndex = parseInt(Math.random()*(employeePool.length));
+      var luckEmployee = employeePool.splice(luckyIndex, 1)[0];
+      if(!luckyList[award.id]){
+        luckyList[award.id] = [luckEmployee];
+      }else{
+        luckyList[award.id].push(luckEmployee);
+      }
+    }
+  }
+  return luckyList;
+};
+
+//上传中奖名单
+var postLuckyList = function(data, cb){
+  var postData = {luckyId: _luckyId, award_list: []};
+  for(var award_id in data){
+    postData.award_list.push({
+      award_id: award_id,
+      list: _.map(data[award_id], 'id')
+    })
+  }
+  API.post("lucky", postData, function(){cb && cb()});
 };
 
 //展示中奖名单
@@ -105,7 +141,6 @@ var showLuckList = function(data){
   var context = [];
   for(var award_id in data){
     templateId = templateId + Math.pow(data[award_id].length, 2);
-
     context.push({
       award_id: award_id,
       count: data[award_id].length,
@@ -125,10 +160,26 @@ var start = function(){
   $(".cj2016-box").hide();
   //bgMusic.play();
   $(".bgbox").html("");
-  API.get("employee", function(data){
-    _employeeList = data;
-    startScroll()
+  var queue = [];
+  //获取中奖奖品
+  queue.push(function(cb){
+    API.get("lottery", function (data) {
+      setCurrentAward(data);
+      cb()
+    });
   });
+  //加载员工列表
+  queue.push(function(cb){
+    API.get("employee", function(data){
+      _employeeList = data;
+      cb()
+    });
+  });
+
+  //开始动画
+  async.waterfall(queue, function(){
+    startScroll()
+  })
 };
 
 start();
@@ -149,12 +200,11 @@ $(document).bind('keyup.return', function(){
    $(".ul-box").stop();
    // bgMusic.pause();
    // stopMusic.play();
-    var luckyList = pickLuckyPeoplePool();
-    //提交中奖候选名单到服务器
-    API.post("lucky", {pool: luckyList}, function(data){
-      showLuckList(data)
+    var luckyList = pickLuckyPeople();
+    //提交中奖名单到服务器
+    postLuckyList(luckyList, function(){
+      showLuckList(luckyList)
     });
-
     _stop = true;
   }else{
     _stop = false;

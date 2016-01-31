@@ -11,7 +11,7 @@ module.exports =
       path: '/lucky'
       biz: 'employee'
       methods:
-        GET: 'getLuckyEmployee', POST: 'doLucky'
+        GET: 'getLuckyEmployee', POST: 'pickLucky'
     }
     {
       path: '/lottery'
