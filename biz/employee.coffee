@@ -65,11 +65,11 @@ class Employee extends _Base
       sql = '''
         update lottery set happened = 1 where id = ?
       '''
-      _Employee.sql(sql, [luckyId]).then(->cb(null, luckyList, copyLuckyList))
+      _Employee.sql(sql, [luckyId]).then(->cb(null, luckyId, luckyList, copyLuckyList))
     )
 
     #记录中奖人的奖品id
-    queue.push((luckyList, copyLuckyList, cb)->
+    queue.push((luckyId, luckyList, copyLuckyList, cb)->
       _async.whilst(
         (->
           luckyList.length
@@ -77,7 +77,7 @@ class Employee extends _Base
           item = luckyList.pop()
           return next() if not item
           _Employee.table().whereIn('id', item.list).update({
-            lucky:1,
+            lucky:luckyId,
             award_id: item.award_id
           }).then(->
             next()

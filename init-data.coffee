@@ -42,9 +42,9 @@ doInit = ->
 
 
 
-setTimeout(->
-  doInit()
-, 3000)
+#setTimeout(->
+#  doInit()
+#, 3000)
 
 
 

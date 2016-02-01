@@ -1,50 +1,81 @@
-<!DOCTYPE html>
-<html lang="en">
+<html lang="zh-CN">
 <head>
-  <meta charset="UTF-8">
-  <title>芒果TV年会抽奖</title>
-  <link href="lib/semantic.min.css" rel="stylesheet" type="text/css">
-  <script src="lib/jquery.min.js"></script>
-  <script src="lib/semantic.min.js"></script>
-  <script src="lib/handlebars.js"></script>
-  <script type="text/x-handlebars-template" id="tableTr">
+  <title>获奖名单 - 芒果tv</title>
+  <meta charset="utf-8">
+  <link rel="stylesheet" href="lottery-list.css" type="text/css" charset="utf-8">
+  <link rel="stylesheet" href="global.css" type="text/css" charset="utf-8">
+  <script type="text/x-handlebars-template" id="table-template">
 
-    {{#each employeeList}}
-      <tr>
-        <td>{{num}}</td>
-        <td>{{name}}</td>
-        <td>{{award_name}}</td>
-        <td></td>
-      </tr>
-    {{/each}}
+
 
   </script>
 </head>
 <body>
-<div class="ui grid">
-  <div class="two wide column"></div>
-  <div class="twelve wide column">
-    <div class="ui one column grid">
-      <div class="column">
-        <h2 class="ui center aligned header">芒果TV 2016 年会中奖名单</h2>
-        <table class="ui celled table">
-          <thead>
-          <tr>
-            <th>工号</th>
-            <th>姓名</th>
-            <th>奖品</th>
-            <th>签名</th>
-          </tr>
-          </thead>
-          <tbody id="employeeListTable">
-          </tbody>
-        </table>
-      </div>
+<div class="namelist">
+  <div class="nl-bg"></div>
+
+  <div class="nl-box">
+    <h1>获奖名单</h1>
+    <div class="tbox">
+      <table class="table01" border="1">
+        <tr>
+          <th>姓名</th>
+          <th>工号</th>
+          <th>签名</th>
+        </tr>
+        <tr>
+          <td>欧阳果果数</td>
+          <td>150100</td>
+          <td>January</td>
+        </tr>
+      </tr>
+      </table>
+      <table class="table02" border="1">
+        <tr>
+          <th>姓名</th>
+          <th>工号</th>
+          <th>签名</th>
+        </tr>
+        <tr>
+          <td>January</td>
+          <td>150100</td>
+          <td>January</td>
+        </tr>
+      </table>
     </div>
+
   </div>
-  <div class="two wide column"></div>
+  <div class="nl-box">
+    <h1>获奖名单</h1>
+    <div class="tbox">
+      <table class="table01" border="1">
+        <tr>
+          <th>姓名</th>
+          <th>工号</th>
+          <th>签名</th>
+        </tr>
+        <tr>
+          <td>欧阳果果数</td>
+          <td>150100</td>
+          <td>January</td>
+        </tr>
+        </tr>
+      </table>
+      <table class="table02" border="1">
+        <tr>
+          <th>姓名</th>
+          <th>工号</th>
+          <th>签名</th>
+        </tr>
+        <tr>
+          <td>January</td>
+          <td>150100</td>
+          <td>January</td>
+        </tr>
+      </table>
+    </div>
+
+  </div>
 </div>
-<script src="API.js"></script>
-<script src="lottery-list.js"></script>
 </body>
 </html>
