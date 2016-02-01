@@ -11,7 +11,7 @@
     <div class="allbox b433">
       {{#each list}}
       <div class="prize ul{{count}}">
-        <span class="z1"><i class="w-thing" style="background: url('image/a.png') bottom center no-repeat;"></i>{{award_id}}</span>
+        <span class="z1"><i class="w-thing" style="background: url('award/{{award_id}}.png') bottom center no-repeat;"></i>{{award_name}}</span>
         <ul>
           {{#each luckyList}}
           <li><img src="avatar/{{num}}.jpg"> <span>{{name}}</span><i>{{num}}</i></li>
@@ -26,7 +26,7 @@
       <div class="allbox b30">
         <div class="prize">
           <span class="z1">
-            <i class="w-thing" style="background: url('image/a.png') bottom center no-repeat;"></i>{{award_id}}
+            <i class="w-thing" style="background: url('award/{{award_id}}.png') bottom center no-repeat;"></i>{{award_name}}
           </span>
         </div>
         <ul>
@@ -42,8 +42,7 @@
       {{#each list}}
       <div class="prize">
         <span class="z2">
-          <i class="w-thing" style="background: url('image/b.png') bottom center no-repeat;"></i>
-          {{award_id}}
+          <i class="w-thing" style="background: url('award/{{award_id}}.png') bottom center no-repeat;"></i>{{award_name}}
         </span>
         <ul>
           {{#each luckyList}}
@@ -58,8 +57,7 @@
     <div class="allbox b5">
       {{#each list}}
       <div class="prize">
-        <span class="z1"><i class="w-thing" style="background: url('image/a.png') bottom center no-repeat;"></i>
-        {{award_id}}
+        <span class="z1"><i class="w-thing" style="background: url('award/{{award_id}}.png') bottom center no-repeat;"></i>{{award_name}}
         </span>
         <ul>
           {{#each luckyList}}
@@ -74,7 +72,7 @@
     <div class="allbox b1">
       {{#each list}}
       <div class="prize">
-        <span class="z1"><i class="w-thing" style="background: url('image/a.png') bottom center no-repeat;"></i>
+        <span class="z1"><i class="w-thing" style="background: url('award/{{award_id}}.png') bottom center no-repeat;"></i>
         </span>
         <ul>
           {{#each luckyList}}
@@ -95,7 +93,9 @@
   <div class="cj2016-box" style="display: none"></div>
   <div class="bgbox"></div>
 </div>
+<!--
 <canvas width="1920" height="1080" style="position: absolute;z-index: 10;top:0px;left: 0px;"></canvas>
+-->
 <script src="lib/jquery.min.js"></script>
 <script src="lib/jquery.let_it_snow.min.js"></script>
 <script src="lib/jquery.hotkeys.js"></script>
@@ -107,13 +107,16 @@
 <script src="API.js"></script>
 <script src="lottery-start.js"></script>
 <script>
-  $("canvas").let_it_snow({
-    windPower: 3,
-    speed: 1,
-    count: 50,
-    size: 10,
-    image: "/image/white-snowflake.png"
-  });
+  var snow = function(){
+    $("canvas").let_it_snow({
+      windPower: 3,
+      speed: 1,
+      count: 50,
+      size: 10,
+      image: "/image/white-snowflake.png"
+    });
+  }
+
 </script>
 </body>
 </html>

@@ -5,6 +5,7 @@ module.exports = {
     if name.indexOf("mix") is -1
       return [{
         id: data.award_id
+        award_name: data.award_name
         count: data.count
       }]
     tmp = name.replace("mix_", "").split("_");
@@ -14,6 +15,7 @@ module.exports = {
       queue.push({
         id: parseInt(award[0]),
         count: parseInt(award[2])
+        award_name: award[1]
       })
     queue
 

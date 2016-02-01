@@ -76,11 +76,12 @@ var showLuckList = function(data){
   var templateId = 0;
   var context = [];
   for(var award_id in data){
-    templateId = templateId + Math.pow(data[award_id].length, 2);
+    templateId = templateId + Math.pow(data[award_id].data.length, 2);
     context.push({
       award_id: award_id,
-      count: data[award_id].length,
-      luckyList: data[award_id]
+      count: data[award_id].data.length,
+      luckyList: data[award_id].data,
+      award_name: data[award_id].award_name
     })
   }
   context = _.orderBy(context, ['count'], ['desc']);
