@@ -124,7 +124,9 @@ $(document).bind('keyup.return', function(){
     var luckyList = pickLuckyPeoplePool();
     //提交中奖候选名单到服务器
     API.post("lucky", {pool: luckyList}, function(data){
-      showLuckList(data)
+      //$(".cj2016-wow").addClass("wow-show");
+      showLuckList(data);
+      //$(".cj2016-wow").removeClass("wow-show");
     });
 
     _stop = true;
