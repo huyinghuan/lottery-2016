@@ -88,14 +88,26 @@ var showLuckList = function(data){
   var templateSource = $("#lotteryListTemplate_"+templateId).html();
   var template = Handlebars.compile(templateSource);
   var html = template({list: context});
-  $(".cj2016-box").html(html).show();
+  $(".cj2016-box").html(html);
 
+  setTimeout(function(){
+    $(".cj2016-box").addClass("wow-open")
+  }, 2000);
+
+
+};
+
+var hideWow = function(){
+  $(".cj2016-box").removeClass("wow-open");
+  $(".cj2016-wow").removeClass("wow-show");
+  $(".cj2016-wow").removeClass("wow-close")
 };
 
 //开始抽奖
 var start = function(){
-  $(".cj2016-box").hide();
-  //bgMusic.play();
+  hideWow();
+  bgMusic.loop(true);
+  bgMusic.play();
   $(".bgbox").html("");
   API.get("employee", function(data){
     _employeeList = data;
@@ -119,18 +131,20 @@ $(document).bind('keyup.return', function(){
   setTimeout(function(){hasDone = false}, operationalInterval);
   if(!_stop){
    $(".ul-box").stop();
-   // bgMusic.pause();
-   // stopMusic.play();
+    bgMusic.pause();
+    stopMusic.play();
     var luckyList = pickLuckyPeoplePool();
     //提交中奖候选名单到服务器
     API.post("lucky", {pool: luckyList}, function(data){
-      //$(".cj2016-wow").addClass("wow-show");
       if(data.end){
         alert("抽奖结束！");
         return;
       }
+      $(".cj2016-wow").addClass("wow-show");
+      setTimeout(function(){
+        $(".cj2016-wow").addClass("wow-close")
+      }, 1000);
       showLuckList(data);
-      //$(".cj2016-wow").removeClass("wow-show");
     });
 
     _stop = true;

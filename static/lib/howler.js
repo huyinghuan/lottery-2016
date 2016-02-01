@@ -1,8 +1,8 @@
 /*!
- *  howler.js v1.1.25
+ *  howler.js v1.1.29
  *  howlerjs.com
  *
- *  (c) 2013-2014, James Simpson of GoldFire Studios
+ *  (c) 2013-2016, James Simpson of GoldFire Studios
  *  goldfirestudios.com
  *
  *  MIT License
@@ -139,7 +139,7 @@
 
     /**
      * Check for codec support.
-     * @param  {String} ext Audio file extention.
+     * @param  {String} ext Audio file extension.
      * @return {Boolean}
      */
     codecs: function(ext) {
@@ -187,13 +187,13 @@
             self.iOSAutoEnable = false;
 
             // remove the touch start listener
-            window.removeEventListener('touchstart', unlock, false);
+            window.removeEventListener('touchend', unlock, false);
           }
         }, 0);
       };
 
       // setup a touch start listener to attempt an unlock in
-      window.addEventListener('touchstart', unlock, false);
+      window.addEventListener('touchend', unlock, false);
 
       return self;
     }
@@ -284,7 +284,7 @@
 
       // if no audio is available, quit immediately
       if (noAudio) {
-        self.on('loaderror');
+        self.on('loaderror', new Error('No audio support.'));
         return;
       }
 
@@ -306,7 +306,7 @@
           if (ext) {
             ext = ext[1].toLowerCase();
           } else {
-            self.on('loaderror');
+            self.on('loaderror', new Error('Could not extract format from passed URLs, please add format parameter.'));
             return;
           }
         }
@@ -318,7 +318,7 @@
       }
 
       if (!url) {
-        self.on('loaderror');
+        self.on('loaderror', new Error('No codec support for selected audio sources.'));
         return;
       }
 
@@ -483,7 +483,7 @@
 
             // fire ended event
             self.on('end', soundId);
-          }, duration * 1000);
+          }, (duration / self._rate) * 1000);
 
           // store the reference to the timer
           self._onendTimer.push({timer: timerId, id: data.id});
@@ -501,9 +501,9 @@
           node.gain.value = self._volume;
 
           if (typeof node.bufferSource.start === 'undefined') {
-            node.bufferSource.noteGrainOn(0, pos, duration);
+            loop ? node.bufferSource.noteGrainOn(0, pos, 86400) : node.bufferSource.noteGrainOn(0, pos, duration);
           } else {
-            node.bufferSource.start(0, pos, duration);
+            loop ? node.bufferSource.start(0, pos, 86400) : node.bufferSource.start(0, pos, duration);
           }
         } else {
           if (node.readyState === 4 || !node.readyState && navigator.isCocoonJS) {
@@ -1060,7 +1060,7 @@
      */
     _clearEndTimer: function(soundId) {
       var self = this,
-        index = 0;
+        index = -1;
 
       // loop through the timers to find the one associated with this sound
       for (var i=0; i<self._onendTimer.length; i++) {
@@ -1136,13 +1136,12 @@
      */
     off: function(event, fn) {
       var self = this,
-        events = self['_on' + event],
-        fnString = fn ? fn.toString() : null;
+        events = self['_on' + event];
 
-      if (fnString) {
+      if (fn) {
         // loop through functions in the event for comparison
         for (var i=0; i<events.length; i++) {
-          if (fnString === events[i].toString()) {
+          if (fn === events[i]) {
             events.splice(i, 1);
             break;
           }
@@ -1269,7 +1268,7 @@
           }
         },
         function(err) {
-          obj.on('loaderror');
+          obj.on('loaderror', err);
         }
       );
     };
