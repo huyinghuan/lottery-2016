@@ -40,8 +40,8 @@ class Employee extends _Base
           order by L.id ASC limit 1
       '''
       _Lottery.sql(sql).then((data)->
-        #resp.send(data[0] or {})
-        cb(1) if not data[0]
+        #全部抽奖完成，结束．
+        return cb(1) if not data[0]
         cb(null, data[0].id,  _utils.analyzeAward(data[0]))
       )
     )
@@ -108,18 +108,11 @@ class Employee extends _Base
     )
 
     _async.waterfall(queue, (err, result)->
+      if err
+        console.log("抽奖结束！")
+        result = {end: true}
       resp.send(result)
+      _utils.logLuckList(result)
     )
 
 module.exports = new Employee()
-
-###
-  {
-    "luckyId":"29",
-    "award_list":[
-      {"award_id":"33","list":["247","923","824","1129"]},
-      {"award_id":"34","list":["700","947","775"]},
-      {"award_id":"35","list":["1140","626","369"]}
-    ]
-  }
-###

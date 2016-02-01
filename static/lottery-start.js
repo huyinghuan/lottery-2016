@@ -11,7 +11,7 @@ var getRandomAvatarClazz = function(){
 var getDivDom = function(id, num, name, left){
   var arr = [id, id, num, name, left, getRandomAvatarClazz(), num];
   var div = '<div id="avatar_?" class="ul-box" data-id="?" data-num="?" data-name="?" style="left: ?px">' +
-    '<a href="" class="img-box ?"><i><img src="/avatar/?.jpg"></i></a></div>';
+    '<a class="img-box ?"><i><img src="/avatar/?.jpg"></i></a></div>';
   for(var index = 0, len = arr.length; index < len; index++){
     div = div.replace(/\?/, arr[index])
   }
@@ -125,6 +125,10 @@ $(document).bind('keyup.return', function(){
     //提交中奖候选名单到服务器
     API.post("lucky", {pool: luckyList}, function(data){
       //$(".cj2016-wow").addClass("wow-show");
+      if(data.end){
+        alert("抽奖结束！");
+        return;
+      }
       showLuckList(data);
       //$(".cj2016-wow").removeClass("wow-show");
     });

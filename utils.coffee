@@ -1,3 +1,6 @@
+_fs = require 'fs'
+_logFile = require('./config').log
+_moment = require 'moment'
 module.exports = {
   #分析奖品构成 主要是存在混合奖品的情况
   analyzeAward: (data)->
@@ -26,4 +29,19 @@ module.exports = {
       luckyIndex = parseInt(Math.random()*(pool.length))
       luckEmployeeList.push(pool.splice(luckyIndex, 1)[0])
     luckEmployeeList
+
+  logLuckList: (data)->
+    return _fs.appendFile(_logFile, "抽奖结束！", ->) if data.end
+    queue = []
+    queue.push(_moment().format("YYYY-MM-DD HH:mm:ss"))
+    for key, value of data
+
+      queue.push("#{value.award_name}:")
+      liststr = []
+      for e in value.data
+        liststr.push("#{e.num}-#{e.name}")
+      queue.push(liststr.join(","))
+      queue.push("\n")
+    _fs.appendFile(_logFile, queue.join("\n"), ->)
+
 }
