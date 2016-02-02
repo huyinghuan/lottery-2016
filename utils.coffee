@@ -1,5 +1,5 @@
 _fs = require 'fs'
-_logFile = require('./config').log
+_path = require 'path'
 _moment = require 'moment'
 module.exports = {
   #分析奖品构成 主要是存在混合奖品的情况
@@ -35,13 +35,12 @@ module.exports = {
     queue = []
     queue.push(_moment().format("YYYY-MM-DD HH:mm:ss"))
     for key, value of data
-
       queue.push("#{value.award_name}:")
       liststr = []
       for e in value.data
         liststr.push("#{e.num}-#{e.name}")
       queue.push(liststr.join(","))
       queue.push("\n")
-    _fs.appendFile(_logFile, queue.join("\n"), ->)
+    _fs.appendFile(_path.join(process.cwd(), "luckyList.log"), queue.join("\n"), ->)
 
 }
