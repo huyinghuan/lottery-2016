@@ -4,78 +4,75 @@
   <meta charset="utf-8">
   <link rel="stylesheet" href="lottery-list.css" type="text/css" charset="utf-8">
   <link rel="stylesheet" href="global.css" type="text/css" charset="utf-8">
-  <script type="text/x-handlebars-template" id="table-template">
-
-
-
+  <script src="lib/handlebars.js"></script>
+  <script src="lib/jquery.min.js"></script>
+  <script type="text/x-handlebars-template" id="template_1">
+    <h1>获奖名单</h1>
+    <div class="jp-box">
+      {{#each lotteryList}}
+      <span class="jp-name">{{award_name}}</span>
+      <ul class="jp-all clearfix">
+        <li class="jp-tit">
+          <b class="z1">姓名</b>
+          <b>工号</b>
+          <b>签名</b>
+          <b class="z1">姓名</b>
+          <b>工号</b>
+          <b>签名</b>
+        </li>
+        {{#each list}}
+        <li class="jp-people">
+          <span class="z1">{{name}}</span>
+          <span>{{num}}</span>
+          <span></span>
+        </li>
+        {{/each}}
+      </ul>
+      {{/each}}
+    </div>
+  </script>
+  <script type="text/x-handlebars-template" id="template_3">
+    <h1>获奖名单</h1>
+    <div>
+      {{#each lotteryList}}
+      <span class="jp-name">{{award_name}}</span>
+      <ul class="jp-all clearfix">
+        <li class="jp-tit">
+          <b class="z1">姓名</b>
+          <b>工号</b>
+          <b>签名</b>
+          <b class="z1">姓名</b>
+          <b>工号</b>
+          <b>签名</b>
+        </li>
+        {{#each list}}
+        <li class="jp-people">
+          <span class="z1">{{name}}</span>
+          <span>{{num}}</span>
+          <span></span>
+        </li>
+        {{/each}}
+      </ul>
+      {{/each}}
+    </div>
   </script>
 </head>
 <body>
 <div class="namelist">
   <div class="nl-bg"></div>
-
   <div class="nl-box">
-    <h1>获奖名单</h1>
-    <div class="tbox">
-      <table class="table01" border="1">
-        <tr>
-          <th>姓名</th>
-          <th>工号</th>
-          <th>签名</th>
-        </tr>
-        <tr>
-          <td>欧阳果果数</td>
-          <td>150100</td>
-          <td>January</td>
-        </tr>
-      </tr>
-      </table>
-      <table class="table02" border="1">
-        <tr>
-          <th>姓名</th>
-          <th>工号</th>
-          <th>签名</th>
-        </tr>
-        <tr>
-          <td>January</td>
-          <td>150100</td>
-          <td>January</td>
-        </tr>
-      </table>
-    </div>
-
-  </div>
-  <div class="nl-box">
-    <h1>获奖名单</h1>
-    <div class="tbox">
-      <table class="table01" border="1">
-        <tr>
-          <th>姓名</th>
-          <th>工号</th>
-          <th>签名</th>
-        </tr>
-        <tr>
-          <td>欧阳果果数</td>
-          <td>150100</td>
-          <td>January</td>
-        </tr>
-        </tr>
-      </table>
-      <table class="table02" border="1">
-        <tr>
-          <th>姓名</th>
-          <th>工号</th>
-          <th>签名</th>
-        </tr>
-        <tr>
-          <td>January</td>
-          <td>150100</td>
-          <td>January</td>
-        </tr>
-      </table>
-    </div>
-
   </div>
 </div>
+
+<script>
+  var search = location.search.replace("?", "").split("=");
+  var id = search[1];
+
+  $.get('/api/lucky?id='+id+'', function(data){
+    var templateSource = $("#template_"+data.length).html();
+    var template = Handlebars.compile(templateSource);
+    $(".nl-box").html(template({lotteryList: data}))
+  })
+</script>
 </body>
 </html>

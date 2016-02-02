@@ -16,13 +16,31 @@ class Employee extends _Base
     )
 
   getLuckyEmployee: (req, resp)->
+    id = req.query.id
     sql = '''
       select E.name, E.num, A.name as award_name from employee E
         left join award A ON E.award_id = A.id
-      where lucky = 1
+      where E.lucky = ?
     '''
-    _Employee.sql(sql).then((data)->
-      resp.send(data)
+    group = (list)->
+      obj = {}
+      for item in list
+        if obj[item.award_name]
+          obj[item.award_name].push(item)
+        else
+          obj[item.award_name] = [item]
+
+      queue = []
+      for key, value of obj
+        value.push({}) if value.length % 2 is 1
+        queue.push({
+          award_name: key
+          list: value
+        })
+      queue
+
+    _Employee.sql(sql, [id]).then((data)->
+      resp.send(group(data))
     )
 
   pickLucky: (req, resp)->

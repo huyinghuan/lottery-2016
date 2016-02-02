@@ -1,12 +1,12 @@
 .namelist {
-    font-family: '微软雅黑',"黑体";
+    font-family: '微软雅黑', "黑体";
     font-size: 16px;
     position: relative;
     width: 694px;
     height: 1011px;
     padding: 56px 50px;
     margin: 0 auto;
-    background: url("/excel/bg-0.jpg") center repeat-y;
+    background: url("excel/bg-0.jpg") center repeat-y;
 }
 
 .nl-bg {
@@ -14,7 +14,7 @@
     height: 100%;
     opacity: 0.7;
     filter: alpha(opacity=70);
-    background: url("/excel/logo.png") bottom center #fff no-repeat;
+    background: url("excel/logo.png") bottom center #fff no-repeat;
 }
 
 .nl-box {
@@ -28,7 +28,7 @@
 .nl-box h1 {
     width: 559px;
     height: 110px;
-    margin: auto;
+    margin: 0 auto;
     padding-top: 10px;
     line-height: 110px;
     font-size: 36px;
@@ -37,40 +37,83 @@
     font-family: '黑体';
     border-bottom: 2px solid #b12429;
 }
-
-.tbox {
-    position: relative;
-    width: 560px;
-    margin: auto;
+.jp-box .jp-name{
+    font-size: 24px;
+    height: 64px;
+    line-height: 64px;
+}
+.jp-box .jp-all li b, .jp-box .jp-all li span {
+    height: 42px;
+    line-height: 42px;
 }
 
-.table01, .table02 {
-    position: absolute;
+.jp-name {
+    display: block;
+    width: 557px;
+    height: 42px;
+    line-height: 42px;
     border: 1px solid #000;
     border-top: 0;
-    line-height: 48px;
+    margin: 0 auto;
     text-align: center;
-}
-
-.table01 th, .table02 th {
-    border-color: #000;
-    border-top: 0;
+    font-size: 18px;
     font-weight: bold;
 }
 
-.table01 td, .table02 td {
-    border-color: #000;
-    border-top: 0;
+.jp-all {
+    width: 558px;
+    margin: 0 auto;
+    color: #000;
+    border-left: 1px solid #000;
+}
+
+.jp-all li .z1 {
+    width: 116px;
+}
+
+.jp-all li b, .jp-all li span {
+    display: block;
+    float: left;
+    width: 80px;
+    font-size: 16px;
+    text-align: center;
+}
+
+.jp-people span {
     color: #333;
 }
 
-.table01 {
-    width: 280px;
-    left: 0px;
-    border-right: 0;
+.jp-tit {
+    height: 36px;
+    line-height: 36px;
+    border-bottom: 1px solid #000;
 }
 
-.table02 {
-    width: 280px;
-    right: 0px;
+.jp-tit b {
+    font-weight: bold;
+    height: 36px;
+    line-height: 36px;
+    border-right: 1px solid #000;
+}
+
+.jp-people {
+    float: left;
+    border-bottom: 1px solid #000;
+}
+
+.jp-people span {
+    height: 36px;
+    line-height: 36px;
+    border-right: 1px solid #000;
+}
+
+.clearfix {
+    *zoom: 1
+}
+
+.clearfix:after {
+    content: "\200B";
+    display: block;
+    height: 0;
+    clear: both
 }
