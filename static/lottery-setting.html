@@ -15,8 +15,9 @@
         <td>{{award_name}}</td>
         <td>{{count}}</td>
         <td>{{#if happened}}是{{else}}否{{/if}}</td>
-        <!--<td><button class="ui red button" data-id="{{id}}">删除</button></td>-->
+        <td><button class="ui red button" data-id="{{id}}">删除</button></td>
         <td><a class="ui blue button" target="_blank" href="lottery-list.html?id={{id}}">打印</a></td>
+        <td>{{id}}</td>
       </tr>
     {{/each}}
   </script>
@@ -76,6 +77,7 @@
             <th>抽奖数量</th>
             <th>是否已完成?</th>
             <th>操作</th>
+            <th>id</th>
           </tr>
           </thead>
           <tbody id="awardListTable">

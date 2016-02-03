@@ -31,7 +31,7 @@ module.exports = {
     luckEmployeeList
 
   logLuckList: (data)->
-    return _fs.appendFile(_logFile, "抽奖结束！", ->) if data.end
+    return _fs.appendFile(_path.join(process.cwd(), "luckyList.log"), "抽奖结束！", ->) if data.end
     queue = []
     queue.push(_moment().format("YYYY-MM-DD HH:mm:ss"))
     for key, value of data
