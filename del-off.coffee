@@ -75,6 +75,6 @@ list = offList.split('\n')
 _Coal = require('./connection').getConnection()
 _Employee = _Coal.Model('employee')
 console.log list.length
-_Employee.table().del().whereIn('num', list).then((data)->
+_Employee.table().select().whereIn('num', list).then((data)->
   console.log data
 )
