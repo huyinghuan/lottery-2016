@@ -4,3 +4,4 @@ db.sqlite
 db.sqlite.*
 .idea
 *.log
+check-list.txt

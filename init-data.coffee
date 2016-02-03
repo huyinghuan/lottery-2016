@@ -15,7 +15,10 @@ doInit = ->
       prefix = file.split(".")[0]
       name = prefix.split("_")[0]
       num = prefix.split("_")[1]
-
+      num = num.replace(/\s/g, "")
+      if not name or not num
+        console.log "error!", file
+        continue
       if index > 1 and (index % 30) is 1
         console.log "本次插入#{queue.length}"
         _Employee.table().insert(queue).then(-> console.log(arguments, "成功！")).catch((e)-> console.log(e))
@@ -40,11 +43,9 @@ doInit = ->
     ).catch((e)-> console.log(e))
   )
 
-
-
-#setTimeout(->
-#  doInit()
-#, 3000)
+setTimeout(->
+  doInit()
+, 3000)
 
 
 
