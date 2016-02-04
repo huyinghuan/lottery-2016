@@ -14,6 +14,12 @@ module.exports =
         GET: 'getLuckyEmployee', POST: 'pickLucky'
     }
     {
+      path: '/lucky-txt'
+      biz: 'employee'
+      methods:
+        GET: 'readLog'
+    }
+    {
       path: '/lottery'
       biz: 'lottery'
       methods:

@@ -1,4 +1,6 @@
 _async = require 'async'
+_fs = require 'fs'
+_path = require 'path'
 _Base = require('water-pit').Base
 _Coal = require('../connection').getConnection()
 _Employee = _Coal.Model('employee')
@@ -132,5 +134,11 @@ class Employee extends _Base
       resp.send(result)
       _utils.logLuckList(result)
     )
+
+  readLog: (req, resp)->
+    _fs.readFile(_path.join(process.cwd(), 'luckyList.log'), 'utf8', (err, data)->
+      resp.send(data.replace(/\n/g, "<br>"))
+    )
+
 
 module.exports = new Employee()
