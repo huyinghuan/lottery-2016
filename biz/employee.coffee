@@ -137,7 +137,8 @@ class Employee extends _Base
 
   readLog: (req, resp)->
     _fs.readFile(_path.join(process.cwd(), 'luckyList.log'), 'utf8', (err, data)->
-      resp.send(data.replace(/\n/g, "<br>"))
+      txt = if data then data.replace(/\n/g, "<br>") else ""
+      resp.send(txt)
     )
 
 
