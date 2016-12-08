@@ -42,10 +42,7 @@ doInit = ->
         _Employee.sql("SELECT count(*) from employee").then((data)-> console.log(data))
     ).catch((e)-> console.log(e))
   )
-
-setTimeout(->
-  doInit()
-, 3000)
-
-
-
+#取消下面三行才会进行数据初始化，数据初始化后 记得把注释加上，避免每次数据都还原。
+#setTimeout(->
+#  doInit()
+#, 3000)
