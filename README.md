@@ -72,6 +72,25 @@ http://localhost:3000
 mix_(28-温情家庭礼包-10)_(29-富士拍立得-10)_(30-芒果小觅-10)
 ```
 
+另外记得修改html，增加与抽奖数量有关的抽奖结果模版。`static/lottery-start.html`
+具体查看issue https://github.com/huyinghuan/lottery-2016/issues/1
+```
+<!--4*4+3*3+3*3=34-->
+  <script type="text/x-handlebars-template" id="lotteryListTemplate_34">
+    <div class="allbox b433">
+      {{#each list}}
+      <div class="prize ul{{count}}">
+        <span class="z1"><i class="w-thing" style="background: url('award/{{award_id}}.png') bottom center no-repeat;"></i>{{award_name}}</span>
+        <ul>
+          {{#each luckyList}}
+          <li><img src="avatar/{{num}}.jpg"> <span>{{name}}</span><i>{{num}}</i></li>
+          {{/each}}
+        </ul>
+      </div>
+      {{/each}}
+    </div>
+  </script>
+```
 ### Thanks
 ```
  设计: luolei@mgtv.com
