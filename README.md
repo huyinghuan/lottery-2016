@@ -98,8 +98,5 @@ mix_(28-温情家庭礼包-10)_(29-富士拍立得-10)_(30-芒果小觅-10)
  开发: ec.huyinghuan@gmail.com
 ```
 
-### DONATE
-支付宝 646344359@qq.com
-
 ### LICENSE
 MIT
