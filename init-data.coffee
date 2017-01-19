@@ -15,10 +15,10 @@ doInit = ->
       prefix = file.split(".")[0]
       name = prefix.split("_")[0]
       num = prefix.split("_")[1]
-      num = num.replace(/\s/g, "")
-      if not name or not num
-        console.log "error!", file
+      if not num?
+        console.log("照片格式不符合规范，应该以  姓名_唯一工号.png  或  姓名_唯一工号.jpg 命名:", file)
         continue
+      num = num.replace(/\s/g, "")
       if index > 1 and (index % 30) is 1
         console.log "本次插入#{queue.length}"
         _Employee.table().insert(queue).then(-> console.log(arguments, "成功！")).catch((e)-> console.log(e))
