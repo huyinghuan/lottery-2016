@@ -1,4 +1,13 @@
+
+
+
+# NOTE 建议使用这个，更完善 更符合现在的浏览器
+
+[https://github.com/JX3BOX/lottery](https://github.com/JX3BOX/lottery)
+
+
 ## 芒果TV 2016 年会抽奖
+
 ----------------
 
   声明: 该代码使用nodejs, coffee, sqlite3 运行于linux, mac.  该代码没有经过window测试． 不对任何windows平台bug进行修复．
